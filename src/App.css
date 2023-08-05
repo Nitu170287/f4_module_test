@@ -102,8 +102,8 @@ body{
   border-radius: 10px;
 }
 .card-top img{
-  width: 400px;
-  height: 250px;
+  width: 100%;
+  height:40vh;
 }
 .card-bottom{
   display: flex;
@@ -167,7 +167,11 @@ body{
   
 }
 .card{
-  width:71%;
+  width:70vw;
+}
+.card-top img{
+  width:100%;
+  height:40vh;
 }
 .post-content button{
 width:15vw;
