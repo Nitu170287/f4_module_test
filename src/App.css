@@ -159,6 +159,33 @@ body{
  .post-text, .post-desc{
   text-align: justify;
 }
+.specific-post-image{
+  position:relative;
+  
+}
+
+.share-like-icon{
+
+  position: absolute;
+  top: 210px; /* Adjust the values as needed */
+  left: 0;
+  z-index: 1; 
+  display: flex;
+  justify-content: space-between;
+ color:white;
+ 
+ width:100%;
+}
+.share-like-icon p{
+  margin-left: 10px;
+}
+
+.share-like-icon img{
+  width:2vw;
+  height: 2vh;
+  text-align: right;
+  margin-right: 10px;
+}
 
  @media only screen and (max-width: 820px) {
 .card-container{
@@ -187,6 +214,33 @@ width:18vw;
 .specific-post-image img{
   width:95vw;
   height:30vh;
+}
+.specific-post-image{
+  position:relative;
+  
+}
+
+.share-like-icon{
+
+  position: absolute;
+  top: 25vh; /* Adjust the values as needed */
+  left: 0;
+  z-index: 1; 
+  display: flex;
+  justify-content: space-between;
+ color:white;
+ 
+ width:100%;
+}
+.share-like-icon p{
+  margin-left: 10px;
+}
+
+.share-like-icon img{
+  width:1vw;
+  height: 2vh;
+  text-align: right;
+  margin-right: 10px;
 }
 
 

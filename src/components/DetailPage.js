@@ -5,6 +5,8 @@ import homeArrowIcon from "../images/Vector 12.png";
 import { useDispatch, useSelector } from "react-redux";
 import { fetchPosts } from "../redux/reducers/postThunkMiddleware";
 import { useParams, useNavigate } from "react-router-dom";
+import heartIcon from "../images/heart_icon.png";
+import shareIcon from "../images/share_icon.png";
 
 const DetailPage = () => {
   const navigate = useNavigate();
@@ -47,11 +49,32 @@ const DetailPage = () => {
       <div className="specific-post-detail">
         <div className="specific-post-image">
           <img src={`https://picsum.photos/200?random=${id}`} alt="post-img" />
+          <div className="share-like-icon">
+          <p>{posts && posts.length > 0
+                ? posts.find((post) => post.id.toString() === id).title.substring(0, 10) + "..."
+                : null}</p>
+                <div className="icon">
+                <img src={shareIcon} alt="share_image" />
+                <img src={heartIcon} alt="heart_image" />
+                </div>
+          
+            
+          </div>
         </div>
 
         <div className="post-content">
-          <button className={showUserInfo ? "inactive-btn" : "active-btn"} onClick={()=>setShowUserInfo(false)}>Detail</button>
-          <button className={showUserInfo ? "active-btn" : "inactive-btn"} onClick={()=>setShowUserInfo(true)}>User Info</button>
+          <button
+            className={showUserInfo ? "inactive-btn" : "active-btn"}
+            onClick={() => setShowUserInfo(false)}
+          >
+            Detail
+          </button>
+          <button
+            className={showUserInfo ? "active-btn" : "inactive-btn"}
+            onClick={() => setShowUserInfo(true)}
+          >
+            User Info
+          </button>
           {showUserInfo ? (
             <p className="post-text">
               Post Was Posted By{" "}
