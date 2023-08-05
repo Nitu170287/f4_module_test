@@ -1,8 +1,9 @@
-import React, { useState } from "react";
+import React, { useEffect, useState } from "react";
 import Navbar from "./Navbar";
 import Card from "./Card";
 import homeArrowIcon from "../images/Vector 12.png";
-import { useSelector } from "react-redux";
+import { useDispatch, useSelector } from "react-redux";
+import { fetchPosts } from "../redux/reducers/postThunkMiddleware";
 import { useParams, useNavigate } from "react-router-dom";
 import heartIcon from "../images/heart_icon.png";
 import shareIcon from "../images/share_icon.png";
@@ -14,10 +15,18 @@ const DetailPage = () => {
   const { id } = useParams();
   // console.log(typeof id);
 
-  // const dispatch = useDispatch();
-  const { posts, loading, error } = useSelector((state) => state.posts);
+   const dispatch = useDispatch();
+  const {posts,loading,error} = useSelector((state) => state.posts);
 
-  // console.log(posts);
+    console.log(posts);
+
+  useEffect(() => {
+    if(posts.length === 0){
+      dispatch(fetchPosts());
+      console.log("api called")
+    }
+    
+  }, [dispatch,posts]);
 
   if (loading) {
     return (
