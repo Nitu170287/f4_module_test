@@ -23,7 +23,7 @@ const DetailPage = () => {
   useEffect(() => {
     if(posts.length === 0){
       dispatch(fetchPosts());
-      console.log("api called")
+      // console.log("api called")
     }
     
   }, [dispatch,posts]);
