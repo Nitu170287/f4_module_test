@@ -1,6 +1,7 @@
 import React,{useEffect} from "react"
 import { useDispatch, useSelector } from "react-redux"
 import { fetchPosts } from "../redux/reducers/postThunkMiddleware";
+import { ColorRing } from "react-loader-spinner";
 
 import searchIcon from "../images/Vector.png"
 import Card from "./Card"
@@ -18,7 +19,15 @@ const HomePage =()=>{
     }, [dispatch]);
   
     if (loading) {
-      return <div>Loading...</div>;
+      return <div style={{width:"100%", height:"100vh", textAlign:"center"}}><ColorRing
+      visible={true}
+      height="80"
+      width="80"
+      ariaLabel="blocks-loading"
+      wrapperStyle={{}}
+      wrapperClass="blocks-wrapper"
+      colors={['#e15b64', '#f47e60', '#f8b26a', '#abbd81', '#849b87']}
+    /></div>;
     }
   
     if (error) {

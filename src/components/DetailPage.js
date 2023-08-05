@@ -7,6 +7,7 @@ import { fetchPosts } from "../redux/reducers/postThunkMiddleware";
 import { useParams, useNavigate } from "react-router-dom";
 import heartIcon from "../images/heart_icon.png";
 import shareIcon from "../images/share_icon.png";
+import { ColorRing } from "react-loader-spinner";
 
 const DetailPage = () => {
   const navigate = useNavigate();
@@ -24,7 +25,19 @@ const DetailPage = () => {
   }, [dispatch]);
 
   if (loading) {
-    return <div>Loading...</div>;
+    return (
+      <div style={{ width: "100%", height: "100vh", textAlign: "center" }}>
+        <ColorRing
+          visible={true}
+          height="80"
+          width="80"
+          ariaLabel="blocks-loading"
+          wrapperStyle={{}}
+          wrapperClass="blocks-wrapper"
+          colors={["#e15b64", "#f47e60", "#f8b26a", "#abbd81", "#849b87"]}
+        />
+      </div>
+    );
   }
 
   if (error) {
@@ -50,15 +63,17 @@ const DetailPage = () => {
         <div className="specific-post-image">
           <img src={`https://picsum.photos/200?random=${id}`} alt="post-img" />
           <div className="share-like-icon">
-          <p>{posts && posts.length > 0
-                ? posts.find((post) => post.id.toString() === id).title.substring(0, 10) + "..."
-                : null}</p>
-                <div className="icon">
-                <img src={shareIcon} alt="share_image" />
-                <img src={heartIcon} alt="heart_image" />
-                </div>
-          
-            
+            <p>
+              {posts && posts.length > 0
+                ? posts
+                    .find((post) => post.id.toString() === id)
+                    .title.substring(0, 10) + "..."
+                : null}
+            </p>
+            <div className="icon">
+              <img src={shareIcon} alt="share_image" />
+              <img src={heartIcon} alt="heart_image" />
+            </div>
           </div>
         </div>
 
